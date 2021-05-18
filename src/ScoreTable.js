@@ -18,6 +18,18 @@ import {
 
 export default class ScoreTable extends Component {
 
+    getTotalScore = () => {
+        let { scores } = this.props.scores
+        let totalScore = 0
+        for (let key in scores) {
+            console.log(key)
+            if (scores[key]) {
+                console.log(scores[key])
+                totalScore += scores[key]
+            }
+        }
+        return totalScore
+    }
 
     render() {
         const { scores, doScore } = this.props
@@ -29,95 +41,97 @@ export default class ScoreTable extends Component {
                         <RuleRow
                             name='ones'
                             score={scores.ones}
-                            doScore={() => doScore('ones', ones.evalRoll())}
+                            doScore={() => doScore('ones', ones.evalRoll)}
                             description={ones.description}
                         />
 
                         <RuleRow
                             name='twos'
                             score={scores.twos}
-                            doScore={() => doScore('twos', twos.evalRoll())}
+                            doScore={() => doScore('twos', twos.evalRoll)}
                             description={twos.description}
                         />
 
                         <RuleRow
                             name='threes'
                             score={scores.threes}
-                            doScore={() => doScore('threes', threes.evalRoll())}
+                            doScore={() => doScore('threes', threes.evalRoll)}
                             description={threes.description}
                         />
 
                         <RuleRow
                             name='fours'
                             score={scores.fours}
-                            doScore={() => doScore('fours', fours.evalRoll())}
+                            doScore={() => doScore('fours', fours.evalRoll)}
                             description={fours.description}
                         />
 
                         <RuleRow
                             name='fives'
                             score={scores.fives}
-                            doScore={() => doScore('fives', fives.evalRoll())}
+                            doScore={() => doScore('fives', fives.evalRoll)}
                             description={fives.description}
                         />
 
                         <RuleRow
                             name='sixes'
                             score={scores.sixes}
-                            doScore={() => doScore('sixes', sixes.evalRoll())}
+                            doScore={() => doScore('sixes', sixes.evalRoll)}
                             description={sixes.description}
                         />
 
                         <RuleRow
                             name='three of kind'
                             score={scores.threeOfKind}
-                            doScore={() => doScore('threeOfKind', threeOfKind.evalRoll())}
+                            doScore={() => doScore('threeOfKind', threeOfKind.evalRoll)}
                             description={threeOfKind.description}
                         />
 
                         <RuleRow
                             name='four of kind'
                             score={scores.fourOfKind}
-                            doScore={() => doScore('fourOfKind', fourOfKind.evalRoll())}
+                            doScore={() => doScore('fourOfKind', fourOfKind.evalRoll)}
                             description={fourOfKind.description}
                         />
 
                         <RuleRow
                             name='full house'
                             score={scores.fullHouse}
-                            doScore={() => doScore('fullHouse', fullHouse.evalRoll())}
+                            doScore={() => doScore('fullHouse', fullHouse.evalRoll)}
                             description={fullHouse.description}
                         />
 
                         <RuleRow
                             name='small straight'
                             score={scores.smallStraight}
-                            doScore={() => doScore('smallStraight', smallStraight.evalRoll())}
+                            doScore={() => doScore('smallStraight', smallStraight.evalRoll)}
                             description={smallStraight.description}
                         />
 
                         <RuleRow
                             name='large straight'
                             score={scores.largeStraight}
-                            doScore={() => doScore('largeStraight', largeStraight.evalRoll())}
+                            doScore={() => doScore('largeStraight', largeStraight.evalRoll)}
                             description={largeStraight.description}
                         />
 
                         <RuleRow
                             name='yahtzee'
                             score={scores.yahtzee}
-                            doScore={() => doScore('yahtzee', yahtzee.evalRoll())}
+                            doScore={() => doScore('yahtzee', yahtzee.evalRoll)}
                             description={yahtzee.description}
                         />
 
                         <RuleRow
                             name='chance'
                             score={scores.chance}
-                            doScore={() => doScore('chance', chance.evalRoll())}
+                            doScore={() => doScore('chance', chance.evalRoll)}
                             description={chance.description}
                         />
                     </tbody>
                 </table>
+
+                <h2 className='total'>{`total score : ${this.props.totalScores}`}</h2>
             </div>
         )
     }

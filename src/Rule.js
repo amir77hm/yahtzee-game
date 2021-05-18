@@ -32,7 +32,7 @@ class SumDistro extends Rule {
     }
 }
 
-class FullHouse {
+class FullHouse extends Rule {
     evalRoll = dice => {
         const freqs = this.freq(dice)
         return freqs.includes(2) && freqs.includes(3) ? this.score : 0
@@ -43,8 +43,9 @@ class SmallStraight extends Rule {
     evalRoll = dice => {
         const d = new Set(dice)
         if ((d.has(2) && d.has(3) && d.has(4) && (d.has(1) || d.has(5)))
-            || (d.has(3) && d.has(4) && d.has(5) && (d.has(2) || d.has(6))))
+            || (d.has(3) && d.has(4) && d.has(5) && (d.has(2) || d.has(6)))) {
             return this.score
+        } else return 0
 
         // if (d.has(3) && d.has(4) && d.has(5) && (d.has(2) || d.has(6)))
         //     return this.score
@@ -54,7 +55,6 @@ class SmallStraight extends Rule {
 class LargeStraight extends Rule {
     evalRoll = dice => {
         const d = new Set(dice)
-
         return d.dice === 5 && (!d.has(1) || !d.has(6)) ? this.score : 0
     }
 }
@@ -83,7 +83,7 @@ const largeStraight = new LargeStraight({ score: 40, description: '40 points for
 
 const yahtzee = new Yahtzee({ score: 50, description: '50 points for a yahtzee' })
 
-const chance = new SumDistro({ count: 0, descriptionn: 'sum of all dice' })
+const chance = new SumDistro({ count: 0, description: 'sum of all dice' })
 
 export {
     ones,
